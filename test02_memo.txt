@@ -1,0 +1,18 @@
+init:
+    map_begin = undefined
+    map_end = undefined
+    map_itr = undefined
+    tokens_begin = undefined
+    tokens_end = undefined
+    tokens_itr = tokens_begin
+for_tokens:
+    is_tokens_end = (tokens_itr == tokens_end)
+    if(is_tokens_end) ip = tokens_begin
+    map_itr = map_begin
+for_map:
+    is_map_end = (map_itr == map_end)
+    is_map_eq = (*map_itr == *tokens_itr)
+    if(is_map_end) ip = for_tokens
+    if(is_map_eq) *tokens_itr = *(map_itr + 2)
+    ip = for_map
+    
